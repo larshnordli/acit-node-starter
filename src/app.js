@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import PrettyError from 'pretty-error';
-import router from './routes/router';
+import router from './router';
 
 const app = express();
 
