@@ -1,14 +1,10 @@
-/* @flow */
+import logger from '../../logger';
+import Conversation from '../../lib/watson/conversation';
 
-import { Router } from 'express';
-import Conversation from '../lib/watson/conversation';
-import logger from '../logger';
-
-const router = new Router();
 const conversation = new Conversation();
 
 // Middleware for default route
-const beginConversation = async (req, res) => {
+const message = async (req, res) => {
   let stringifiedOutput: string = '';
   try {
     const response: Object = await conversation.message('Hello');
@@ -21,7 +17,4 @@ const beginConversation = async (req, res) => {
   res.send(stringifiedOutput);
 };
 
-// Register your routes and middleware to handle them here!!
-router.get('/', beginConversation);
-
-export default router;
+export default message;
