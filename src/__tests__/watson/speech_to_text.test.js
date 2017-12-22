@@ -33,8 +33,8 @@ describe('unit test', () => {
   test('validate default recognize output structure from Watson', async () => {
     expect.assertions(7);
     const response: Object = await speechToText.recognize(
-      './src/__tests__/resources/audio-file.flac',
-      'audio/flac',
+      './src/__tests__/resources/audio-file.flac', // audio file path
+      'audio/flac', // audio content type
     );
     expect(response).toBeType('object');
     expect(response.results).toBeType('array');
@@ -43,6 +43,34 @@ describe('unit test', () => {
     expect(response.results[0].alternatives[0].transcript).toBeType('string');
     expect(response.results[0].alternatives[0].confidence).toBeType('number');
     expect(response.results[0].final).toBeType('boolean');
+  });
+});
+
+describe('unit test', () => {
+  test('validate that params from config are read by watson stt service', async () => {
+    expect.assertions(6);
+    const response: Object = await speechToText.recognize(
+      './src/__tests__/resources/audio-file.flac', // audio file path
+      'audio/flac', // audio content type
+      undefined, // model - default
+      undefined, // customization string - default
+      undefined, // inactivity timeout - default
+      undefined, // keywords - default
+      undefined, // keywordsThreshold - default
+      undefined, // maxAlternatives- default
+      undefined, // wordAlternativsThreshold - default
+      undefined, // wordConfidence - default
+      'true', // timestamps - I want to test if strings get converted to boolean downstream
+      undefined, // profanity filter - default
+      undefined, // smart_formatting - default
+      true, // speaker labels - testing if traditional boolean works
+    );
+    expect(response).toBeType('object');
+    expect(response.speaker_labels).toBeType('array');
+    expect(response.results).toBeType('array');
+    expect(response.results[0]).toBeType('object');
+    expect(response.results[0].alternatives).toBeType('array');
+    expect(response.results[0].alternatives[0].timestamps).toBeType('array');
   });
 });
 
