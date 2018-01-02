@@ -5,16 +5,15 @@ const conversation = new Conversation();
 
 // Middleware for default route
 const message = async (req, res) => {
-  let stringifiedOutput: string = '';
+  let response: Object = null;
   try {
-    const response: Object = await conversation.message('Hello');
-    const { output: { text } } = response;
-    stringifiedOutput = text.join('. ');
+    const { body: { input: { text } } } = req;
+    const { body: { context } } = req;
+    response = await conversation.message(text, context);
   } catch (error) {
     logger.error(error);
-    stringifiedOutput = `There was an error retrieving a response from the conversation service!`;
   }
-  res.send(stringifiedOutput);
+  res.send(response);
 };
 
 export default message;

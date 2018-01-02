@@ -30,8 +30,12 @@ describe('smoke test', () => {
   test('confirm we get a response from the router', async () => {
     expect.assertions(1);
     const req = {
-      text: 'Test',
-      context: {},
+      body: {
+        input: {
+          text: 'Test',
+        },
+        context: {},
+      },
     };
     await message(req, res);
     expect(res.statusCode).toBe(200);
@@ -40,14 +44,17 @@ describe('smoke test', () => {
 
 describe('unit test', () => {
   test('verify response from router', async () => {
-    expect.assertions(3);
+    expect.assertions(2);
     const req = {
-      text: 'Test',
-      context: {},
+      body: {
+        input: {
+          text: 'Test',
+        },
+        context: {},
+      },
     };
     await message(req, res);
     expect(res.statusCode).toEqual(200);
-    expect(res.text).toContain('Test text');
     expect(res.context).toBeUndefined();
   });
 });

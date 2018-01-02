@@ -29,14 +29,10 @@ var Api = (function() {
   function sendRequest(text, context) {
     // Build request payload
     const payloadToWatson = {};
-    if (text) {
-      payloadToWatson.input = {
-        text,
-      };
-    }
-    if (context) {
-      payloadToWatson.context = context;
-    }
+    payloadToWatson.input = {
+      text,
+    };
+    payloadToWatson.context = context;
 
     // Built http request
     const http = new XMLHttpRequest();
