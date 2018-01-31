@@ -10,6 +10,7 @@
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "dotenv": "^5.0.0",
     "express": "^4.15.5",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
@@ -53,26 +54,21 @@
     "setupTestFrameworkScriptFile": "<rootDir>/tools/jest.setup.js"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add --force"
-    ],
-    "*.{json}": [
-      "prettier --parser json --write",
-      "git add --force"
-    ]
+    "*.js": ["eslint --fix", "git add --force"],
+    "*.{json}": ["prettier --parser json --write", "git add --force"]
   },
   "scripts": {
     "precommit": "lint-staged",
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
-    "fix": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --fix .",
+    "fix":
+      "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --fix .",
     "check": "flow check",
     "test": "jest",
     "test-watch": "jest --watch",
     "build": "node tools/build.js",
     "build-watch": "node tools/build.js --watch",
-    "debug": "node --inspect=0.0.0.0:9229  tools/run.js",
-    "dev": "node tools/run.js",
+    "debug": "node -r dotenv/config--inspect=0.0.0.0:9229  tools/run.js",
+    "dev": "node -r dotenv/config tools/run.js",
     "start": "node build/server.js"
   }
 }
