@@ -67,7 +67,7 @@
     "test-watch": "jest --watch",
     "build": "node tools/build.js",
     "build-watch": "node tools/build.js --watch",
-    "debug": "node -r dotenv/config--inspect=0.0.0.0:9229  tools/run.js",
+    "debug": "node -r dotenv/config --inspect=0.0.0.0:9229  tools/run.js",
     "dev": "node -r dotenv/config tools/run.js",
     "start": "node build/server.js"
   }
