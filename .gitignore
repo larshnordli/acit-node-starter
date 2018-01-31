@@ -5,6 +5,7 @@ build
 node_modules
 npm-debug.log
 logs
+.env
 
 # Editors and IDEs
 .vscode/*

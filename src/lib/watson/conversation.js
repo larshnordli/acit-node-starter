@@ -7,7 +7,7 @@ import config from '../../config';
 const conversationSDK = new ConversationV1({
   username: config.watson.conversation.username,
   password: config.watson.conversation.password,
-  version_date: ConversationV1.VERSION_DATE_2016_09_20,
+  version_date: config.watson.conversation.version_date,
   headers: {
     'X-Watson-Learning-Opt-Out': config.watson.opt_out_logging,
   },
