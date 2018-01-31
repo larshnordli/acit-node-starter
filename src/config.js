@@ -16,6 +16,7 @@ module.exports = {
       username: process.env.WATSON_CONVERSATION_USERNAME,
       password: process.env.WATSON_CONVERSATION_PASSWORD,
       workspace: process.env.WATSON_CONVERSATION_WORKSPACE,
+      version_date: '2017-05-26',
     },
     discovery: {
       username: process.env.WATSON_DISCOVERY_USERNAME,
