@@ -1,7 +1,3 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 module.exports = {
   // Server values
   port: process.env.PORT || 3000,

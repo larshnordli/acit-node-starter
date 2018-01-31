@@ -3,7 +3,7 @@ import Conversation from '../../lib/watson/conversation';
 
 const conversation = new Conversation();
 
-// Middleware for default route
+// Middleware /api/message
 const message = async (req, res) => {
   let response: Object = null;
   try {
