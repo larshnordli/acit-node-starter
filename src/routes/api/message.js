@@ -1,20 +1,34 @@
+/* @flow */
+
+import { $Request, $Response } from 'express';
 import logger from '../../logger';
 import Conversation from '../../lib/watson/conversation';
 
 const conversation = new Conversation();
 
-// Middleware /api/message
-const message = async (req, res) => {
-  let response: Object = null;
+/**
+ * This function handles the logic for the chatbot endpoint.
+ * It returns the Watson Conversation response to the client.
+ * @param  {$Request} req
+ * @param  {$Response} res
+ */
+const message = async (req: $Request, res: $Response) => {
+  let response: Object = {};
   try {
     const { body: { input: { text } } } = req;
-    logger.debug(`Input text: `, text);
     const { body: { context } } = req;
-    logger.debug(`Input context: \n`, context);
-    response = await conversation.message(text, context);
-    logger.debug(`Response: \n`, response);
+    try {
+      logger.debug(`Sending text:`, text, `and context\n`, context);
+      response = await conversation.message(text, context);
+      logger.debug(`Response received: \n`, response);
+    } catch (error) {
+      logger.error(
+        `There was an error retrieving a response from Watson Conversation`,
+        error,
+      );
+    }
   } catch (error) {
-    logger.error(error);
+    logger.error(`There was an error parsing the request from client`, error);
   }
   res.send(response);
 };

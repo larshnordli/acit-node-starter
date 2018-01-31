@@ -3,7 +3,9 @@
 import ConversationV1 from 'watson-developer-cloud/conversation/v1';
 import config from '../../config';
 
-// Initialize IBM's Conversation Service SDK.
+/**
+ * Initialize Watson Conversation SDK.
+ */
 const conversationSDK = new ConversationV1({
   username: config.watson.conversation.username,
   password: config.watson.conversation.password,
@@ -13,9 +15,19 @@ const conversationSDK = new ConversationV1({
   },
 });
 
-// Conversation class that holds all operations about Watson Conversation.
-// Add more functions about Conversation here!!
+/**
+ * Conversation class that holds all functions about Watson Conversation.
+ * Add more functions that leverage the Watson Conversation SDK here.
+ */
 class Conversation {
+  /**
+   * This synchronous function leverages the SDK to send a
+   * message to Watson Conversation.
+   * It returns a JSON object from Watson Conversation
+   * @param  {string} text
+   * @param  {Object=} context
+   * @returns Promise
+   */
   message = (text: string, context?: Object): Promise<any> => {
     const payload = {
       workspace_id: config.watson.conversation.workspace,
@@ -34,7 +46,12 @@ class Conversation {
       }),
     );
   };
-  static getWorkspace = () => {
+  /**
+   * This synchronous function leverages the Watson Conversation SDK
+   * to obtain a JSON representation of your Watson Service.
+   * @returns Promise
+   */
+  static getWorkspace = (): Promise<any> => {
     const params = {
       workspace_id: config.watson.conversation.workspace,
       export: true,
