@@ -1,32 +1,28 @@
-# ACIT NodeJS Starter
-
 <!-- TOC -->
 
-- [ACIT NodeJS Starter](#acit-nodejs-starter)
-    - [Overview](#overview)
-        - [Technology Stack](#technology-stack)
-        - [Directory Layout](#directory-layout)
-    - [Quickstart](#quickstart)
-        - [Prerequisites](#prerequisites)
-        - [Getting started](#getting-started)
-        - [How to test](#how-to-test)
-        - [How to debug](#how-to-debug)
-        - [Deploying to IBM cloud](#deploying-to-ibm-cloud)
-            - [Delivery Pipeline](#delivery-pipeline)
-    - [API Documentation](#api-documentation)
-        - [Pending](#pending)
-    - [Demos](#demos)
-    - [Reference Articles and Tutorials](#reference-articles-and-tutorials)
+- [Overview](#overview)
+    - [Technology Stack](#technology-stack)
+    - [Directory Layout](#directory-layout)
+- [Quickstart](#quickstart)
+    - [Prerequisites](#prerequisites)
+    - [Getting started](#getting-started)
+    - [How to test](#how-to-test)
+    - [How to debug](#how-to-debug)
+    - [Deploying to IBM cloud](#deploying-to-ibm-cloud)
+        - [Delivery Pipeline](#delivery-pipeline)
+- [API Documentation](#api-documentation)
+- [Demos](#demos)
+- [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
 <!-- /TOC -->
 
-## Overview
+# Overview
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
 This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
 
-### Technology Stack
+## Technology Stack
 
 * [NodeJS](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript),
 [Babel](http://babeljs.io/), 
@@ -37,7 +33,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 [session](https://github.com/expressjs/session), [cors](https://github.com/expressjs/cors) — Common HTTP server features.
 * [Jest](http://facebook.github.io/jest/) - Unit and snapshot testing
 
-### Directory Layout
+## Directory Layout
 
 ```bash
 .
@@ -56,17 +52,15 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ├── package.json                # List of project dependencies
 ```
 
----
+# Quickstart
 
-## Quickstart
-
-### Prerequisites
+## Prerequisites
 
 1) NodeJS [8.9.1](https://nodejs.org/en/download/) or above
 2) NPM 5.5.1 or above (comes with NodeJS install)
 3) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
-### Getting started
+## Getting started
 Clone this project and host the code either on Github or IBM's Git repository
 
 `git clone https://github.com/brian-leppez/acit-node-starter <your-project-name>`
@@ -85,7 +79,7 @@ The NodeJS server will be listening on https://localhost:3000
 
 ---
 
-### How to test
+## How to test
 
 ```bash
 npm lint              # Find problematic patterns in code
@@ -97,15 +91,15 @@ With Visual Studio Code's debugger you can also launch Jest in debug mode with t
 
 For more information visit http://facebook.github.io/jest/
 
-### How to debug
+## How to debug
 
 In order to run the app with V8 inspector enabled, simply run the server in debug mode `npm run debug` and use Visual Studio Code's debugger to attach to the running process.
 
-### Deploying to IBM cloud
+## Deploying to IBM cloud
 
 The best way to deploy the project is to build a DevOps toolchain with the ['Build your own toolchain' template](https://console.bluemix.net/devops/create). Add the Repo tool to your toolchain so that it knows where you code is stored and add a 'Delivery Pipeline' integration tool.
 
-#### Delivery Pipeline
+### Delivery Pipeline
 When working with Devliery Pipeline, it's always best practice to have 2 versions of your app. 
 
 1) A development deploy where the latest changes are introduced for testing. This 'staging' deploy is used mainly for developers and project managers for testing and feedback purposes.
@@ -120,18 +114,16 @@ Each deploy will come in 3 stages: Build, Test and Deploy. For more information 
 
 3) Deploy. Deploys app to IBM Cloud.
 
----
+# API Documentation
 
-## API Documentation
+ Pending
 
-### Pending
-
-## Demos
+# Demos
 
 [Watson Conversation Demo](https://acit-node-starter.mybluemix.net/)
 
 
-## Reference Articles and Tutorials
+# Reference Articles and Tutorials
 
 * [Working with Delivery Pipelines](https://console.bluemix.net/docs/services/ContinuousDelivery/pipeline_working.html#pipeline-working)
 * [Stop using JWT for sesstions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
