@@ -1,4 +1,4 @@
-<!-- TOC -->
+# Table of Contents
 
 - [Overview](#overview)
     - [Technology Stack](#technology-stack)
@@ -14,7 +14,7 @@
 - [Demos](#demos)
 - [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
-<!-- /TOC -->
+
 
 # Overview
 
