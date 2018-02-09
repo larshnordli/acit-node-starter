@@ -3,9 +3,7 @@
 import ConversationV1 from 'watson-developer-cloud/conversation/v1';
 import config from '../../config';
 
-/**
- * Initialize Watson Conversation SDK.
- */
+// Initializing Watson Conversation SDK.
 const conversationSDK = new ConversationV1({
   username: config.watson.conversation.username,
   password: config.watson.conversation.password,
@@ -16,7 +14,7 @@ const conversationSDK = new ConversationV1({
 });
 
 /**
- * Conversation class that holds all functions about Watson Conversation.
+ * This Conversation class holds all functions about Watson Conversation.
  * Add more functions that leverage the Watson Conversation SDK here.
  */
 class Conversation {
