@@ -26,11 +26,18 @@ const logger = new winston.Logger({
       timestamp: timestampFormat,
       datePattern: 'yyyy-MM-dd',
       prepend: true,
-      level: 'debug',
+      level: 'info',
       json: false,
       prettyprint: prettyprintFormat,
     }),
   ],
 });
+
+logger.stream = {
+  /* eslint-disable no-unused-vars */
+  write: (message, encoding) => {
+    logger.info(message);
+  },
+};
 
 module.exports = logger;
