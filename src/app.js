@@ -6,7 +6,6 @@ import cors from 'cors';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import session from 'express-session';
 import PrettyError from 'pretty-error';
 import morgan from 'morgan';
 import router from './router';
@@ -36,14 +35,6 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-  session({
-    name: 'sid',
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.SESSION_SECRET || 'secret',
-  }),
-);
 
 app.use(router);
 
