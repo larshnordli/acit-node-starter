@@ -1,6 +1,5 @@
 /* @flow */
 
-import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
@@ -14,8 +13,6 @@ import logger from './logger';
 const app = express();
 
 app.use(morgan('combined', { stream: logger.stream }));
-
-app.use(express.static(path.resolve(__dirname, '../public/')));
 
 app.set('trust proxy', 'loopback');
 
