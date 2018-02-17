@@ -8,8 +8,6 @@
   - [Getting started](#getting-started)
   - [How to test](#how-to-test)
   - [How to debug](#how-to-debug)
-  - [Deploying to IBM cloud](#deploying-to-ibm-cloud)
-    - [Delivery Pipeline](#delivery-pipeline)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
 - [Reference Articles and Tutorials](#reference-articles-and-tutorials)
@@ -28,7 +26,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 [ESLint](https://eslint.org/), 
 [Prettier](https://prettier.io/) — Core platform and web tools
 * [Express](https://expressjs.com/), 
-[session](https://github.com/expressjs/session), [cors](https://github.com/expressjs/cors) — Common HTTP server features.
+[Router](https://expressjs.com/en/guide/routing.html), [cors](https://github.com/expressjs/cors) — Common HTTP server features.
 * [Jest](http://facebook.github.io/jest/) - Unit and snapshot testing
 
 ## Directory Layout
@@ -38,7 +36,6 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ├── /build/                     # The compiled output (via Babel)
 ├── /src/                       # Node.js application source files
 │   ├── /__tests__/             # Application tests
-│   ├── /routes/                # Express endpoints
 │   ├── /app.js                 # Express.js application
 │   ├── /config.js              # Specific application configuration information
 │   ├── /logger.js              # Application information logger 
@@ -80,35 +77,12 @@ The NodeJS server will be listening on https://localhost:3000
 ```bash
 yarn lint              # Find problematic patterns in code
 yarn check             # Check source code for type errors
-yarn test          # Runs Jest on the project
+yarn test              # Runs Jest on the project
 ```
 
 With Visual Studio Code's debugger you can also launch Jest in debug mode with the included configuration.
 
 For more information visit http://facebook.github.io/jest/
-
-## How to debug
-
-In order to run the app with V8 inspector enabled, simply run the server in debug mode `yarn run debug` and use Visual Studio Code's debugger to attach to the running process.
-
-## Deploying to IBM cloud
-
-The best way to deploy the project is to build a DevOps toolchain with the ['Build your own toolchain' template](https://console.bluemix.net/devops/create). Add the Repo tool to your toolchain so that it knows where you code is stored and add a 'Delivery Pipeline' integration tool.
-
-### Delivery Pipeline
-When working with Devliery Pipeline, it's always best practice to have 2 versions of your app. 
-
-1) A development deploy where the latest changes are introduced for testing. This 'staging' deploy is used mainly for developers and project managers for testing and feedback purposes.
-
-2) A production deploy where the stable application is hosted. This deploy will have tested features and is to be considered stable and ready to show to the client for feedback. 
-
-Each deploy will come in 3 stages: Build, Test and Deploy. For more information on the scripts needed for each stage, see the [deploy](./deploy) folder. 
-
-1) Build. It installs the needed dependencies and builds the project. 
-
-2) Test. It runs Jest and performs all unit, integration and smoke tests.
-
-3) Deploy. Deploys app to IBM Cloud.
 
 # API Documentation
 
@@ -116,7 +90,7 @@ Each deploy will come in 3 stages: Build, Test and Deploy. For more information 
 
 # Demos
 
-[Watson Conversation Demo](https://acit-node-starter.mybluemix.net/)
+ Pending
 
 
 # Reference Articles and Tutorials
