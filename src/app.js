@@ -8,9 +8,13 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import PrettyError from 'pretty-error';
+import morgan from 'morgan';
 import router from './router';
+import logger from './logger';
 
 const app = express();
+
+app.use(morgan('combined', { stream: logger.stream }));
 
 app.use(express.static(path.resolve(__dirname, '../public/')));
 

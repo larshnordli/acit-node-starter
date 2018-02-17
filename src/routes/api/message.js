@@ -17,20 +17,16 @@ const message = async (req: $Request, res: $Response) => {
   try {
     const { body: { input: { text } } } = req;
     const { body: { context } } = req;
-    try {
-      logger.debug(`Sending text:`, text, `and context\n`, context);
-      response = await conversation.message(text, context);
-      logger.debug(`Response received: \n`, response);
-    } catch (error) {
-      logger.error(
-        `There was an error retrieving a response from Watson Conversation`,
-        error,
-      );
-    }
+    logger.debug(`Sending text:`, text, `and context\n`, context);
+    response = await conversation.message(text, context);
+    res.send(response);
   } catch (error) {
-    logger.error(`There was an error parsing the request from client`, error);
+    logger.error(
+      `There was an error retrieving a response from Watson Conversation`,
+      error,
+    );
+    res.status(500).end();
   }
-  res.send(response);
 };
 
 export default message;
