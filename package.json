@@ -12,7 +12,6 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.0",
     "express": "^4.15.5",
-    "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "jest": "^21.2.0",
     "morgan": "^1.9.0",
