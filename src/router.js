@@ -1,11 +1,14 @@
 /* @flow */
 
 import { Router } from 'express';
-import message from './routes/api/message';
 
 const router = new Router();
 
 // Register your routes and middleware to handle them here!!
-router.post('/api/message', message);
+const defaultEndpoint = (req, res) => {
+  res.send(`Your NodeJS server is running`);
+};
+
+router.get(`/`, defaultEndpoint);
 
 export default router;
