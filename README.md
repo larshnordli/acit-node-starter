@@ -1,20 +1,18 @@
-<!-- TOC -->
+# Table of Contents
 
 - [Overview](#overview)
-    - [Technology Stack](#technology-stack)
-    - [Directory Layout](#directory-layout)
+  - [Technology Stack](#technology-stack)
+  - [Directory Layout](#directory-layout)
 - [Quickstart](#quickstart)
-    - [Prerequisites](#prerequisites)
-    - [Getting started](#getting-started)
-    - [How to test](#how-to-test)
-    - [How to debug](#how-to-debug)
-    - [Deploying to IBM cloud](#deploying-to-ibm-cloud)
-        - [Delivery Pipeline](#delivery-pipeline)
+  - [Prerequisites](#prerequisites)
+  - [Getting started](#getting-started)
+  - [How to test](#how-to-test)
+  - [How to debug](#how-to-debug)
+  - [Deploying to IBM cloud](#deploying-to-ibm-cloud)
+    - [Delivery Pipeline](#delivery-pipeline)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
 - [Reference Articles and Tutorials](#reference-articles-and-tutorials)
-
-<!-- /TOC -->
 
 # Overview
 
@@ -24,7 +22,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 
 ## Technology Stack
 
-* [NodeJS](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript),
+* [NodeJS](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/en/), [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript),
 [Babel](http://babeljs.io/), 
 [Flow](https://flow.org/), 
 [ESLint](https://eslint.org/), 
@@ -38,10 +36,8 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ```bash
 .
 ├── /build/                     # The compiled output (via Babel)
-├── /public                     # Basic Watson Conversation front-end client
 ├── /src/                       # Node.js application source files
-│   ├── /__tests__/             # Jest unit, integration, and smoke tests.
-│   ├── /lib/                   # IBM Cloud controllers
+│   ├── /__tests__/             # Application tests
 │   ├── /routes/                # Express endpoints
 │   ├── /app.js                 # Express.js application
 │   ├── /config.js              # Specific application configuration information
@@ -56,8 +52,8 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 
 ## Prerequisites
 
-1) NodeJS [8.9.1](https://nodejs.org/en/download/) or above
-2) NPM 5.5.1 or above (comes with NodeJS install)
+1) NodeJS [8.9.4](https://nodejs.org/en/download/) or above
+2) [Yarn](https://yarnpkg.com/en/docs/install) 
 3) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
 ## Getting started
@@ -69,11 +65,11 @@ Clone this project and host the code either on Github or IBM's Git repository
 
 Install dependecies.
 
-`npm install` 
+`yarn install` 
 
 To build the project and launch a development server with hot reload.
 
-`npm run dev`
+`yarn dev`
 
 The NodeJS server will be listening on https://localhost:3000
 
@@ -82,9 +78,9 @@ The NodeJS server will be listening on https://localhost:3000
 ## How to test
 
 ```bash
-npm lint              # Find problematic patterns in code
-npm check             # Check source code for type errors
-npm run test          # Runs Jest on the project
+yarn lint              # Find problematic patterns in code
+yarn check             # Check source code for type errors
+yarn test          # Runs Jest on the project
 ```
 
 With Visual Studio Code's debugger you can also launch Jest in debug mode with the included configuration.
@@ -93,7 +89,7 @@ For more information visit http://facebook.github.io/jest/
 
 ## How to debug
 
-In order to run the app with V8 inspector enabled, simply run the server in debug mode `npm run debug` and use Visual Studio Code's debugger to attach to the running process.
+In order to run the app with V8 inspector enabled, simply run the server in debug mode `yarn run debug` and use Visual Studio Code's debugger to attach to the running process.
 
 ## Deploying to IBM cloud
 
