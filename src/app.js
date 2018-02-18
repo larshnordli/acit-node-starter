@@ -5,10 +5,12 @@ import cors from 'cors';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
 import PrettyError from 'pretty-error';
 import morgan from 'morgan';
-import router from './router';
 import logger from './logger';
+import config from './config';
+import router from './router';
 
 const app = express();
 
@@ -32,6 +34,33 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+//
+// Authentication
+// -----------------------------------------------------------------------------
+app.use(
+  expressJwt({
+    secret: config.auth.jwt.secret,
+    getToken: req => {
+      if (
+        req.headers.authorization &&
+        req.headers.authorization.split(' ')[0] === 'Bearer'
+      ) {
+        return req.headers.authorization.split(' ')[1];
+      }
+      return undefined;
+    },
+  }).unless({ path: [`/`, `/authenticate`] }),
+);
+// Error handler for express-jwt
+app.use((err, req, res, next) => {
+  // eslint-disable-line no-unused-vars
+  if (err instanceof Jwt401Error) {
+    logger.error('[express-jwt-error]');
+    res.status(401).send('Invalid token');
+  }
+  next(err);
+});
 
 app.use(router);
 
