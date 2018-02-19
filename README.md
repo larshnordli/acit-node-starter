@@ -50,8 +50,9 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ### Prerequisites
 
 1) NodeJS [8.9.4](https://nodejs.org/en/download/) or above
-2) [Yarn](https://yarnpkg.com/en/docs/install) 
-3) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
+2) [Yarn](https://yarnpkg.com/en/docs/install)
+3) (Windows only) Download and install the [Visual C++ 2017 Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools)
+4) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
 ### Getting started
 Clone this project and host the code either on Github or IBM's Git repository
