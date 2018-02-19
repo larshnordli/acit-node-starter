@@ -23,6 +23,5 @@ exports.findByUsername = (username, cb) => {
         return cb(null, record);
       }
     });
-    // return cb(null, null);
   });
 };
