@@ -6,8 +6,6 @@ import users from './db/users';
 passport.use(
   new BasicStrategy((username, password, cb) => {
     users.findByUsername(username, (err, user) => {
-      console.log(`passport ${err}${user}`);
-      console.log(`username and password sent ${username}${password}`);
       if (err) {
         return cb(err);
       }
