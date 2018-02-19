@@ -16,6 +16,7 @@
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "jest": "^21.2.0",
+    "jsonwebtoken": "^8.1.1",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",

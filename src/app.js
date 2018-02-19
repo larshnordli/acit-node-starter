@@ -8,8 +8,10 @@ import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
 import PrettyError from 'pretty-error';
 import morgan from 'morgan';
-import logger from './logger';
+import jwt from 'jsonwebtoken';
+import passport from './passport';
 import config from './config';
+import logger from './logger';
 import router from './router';
 
 const app = express();
@@ -61,6 +63,25 @@ app.use((err, req, res, next) => {
   }
   next(err);
 });
+
+app.post(
+  '/authenticate',
+  passport.authenticate('basic', { session: false }),
+  async (req, res) => {
+    const token = await jwt.sign(
+      {
+        username: req.user.username,
+        email: req.user.emails[0].value,
+      },
+      config.auth.jwt.secret,
+    );
+    res.json({
+      token,
+    });
+  },
+);
+
+// -----------------------------------------------------------------------------
 
 app.use(router);
 

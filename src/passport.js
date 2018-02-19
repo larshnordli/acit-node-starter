@@ -1,30 +1,25 @@
-// import passport from 'passport';
-// import BasicStrategy from 'passport-http';
-// import config from './config';
+import passport from 'passport';
+import { BasicStrategy } from 'passport-http';
 
-// const users = [
-//   {
-//     username: 'test-user',
-//     password: 'test-password',
-//     id: 1,
-//   },
-// ];
+import users from './db/users';
 
-// passport.use(
-//   new BasicStrategy((userid, password, done) => {
-//     if (
-//       findOne({ username: userid }, (error, user) => {
-//         if (error) {
-//           return done(error);
-//         }
-//         if (!user) {
-//           return done(null, false);
-//         }
-//         if (!user.verifyPassword(password)) {
-//           return done(null, false);
-//         }
-//         return done(null, user);
-//       })
-//     );
-//   }),
-// );
+passport.use(
+  new BasicStrategy((username, password, cb) => {
+    users.findByUsername(username, (err, user) => {
+      console.log(`passport ${err}${user}`);
+      console.log(`username and password sent ${username}${password}`);
+      if (err) {
+        return cb(err);
+      }
+      if (!user) {
+        return cb(null, false);
+      }
+      if (user.password !== password) {
+        return cb(null, false);
+      }
+      return cb(null, user);
+    });
+  }),
+);
+
+export default passport;
