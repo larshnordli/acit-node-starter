@@ -17,7 +17,6 @@ yarn-error.log*
 
 # Client
 client/node_modules/
-client/.gitignore
 client/build/
 
 
