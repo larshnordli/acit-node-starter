@@ -34,6 +34,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ```bash
 .
 ├── /build/                     # The compiled output (via Babel)
+├── /client/                    # React client code
 ├── /src/                       # Node.js application source files
 │   ├── /__tests__/             # Application tests
 │   ├── /app.js                 # Express.js application
@@ -60,15 +61,23 @@ Clone this project and host the code either on Github or IBM's Git repository
 
 `cd <your-project-name>`
 
-Install dependecies.
+
+Install Server Dependencies (NodeJS)
 
 `yarn install` 
 
-To build the project and launch a development server with hot reload.
+Install Client Dependencies (React)
+
+`cd client`
+`yarn install`
+
+To build the project and launch a development server with hot reload. Go back to your project root.
 
 `yarn dev`
 
-The NodeJS server will be listening on https://localhost:3000
+IMPORTANT
+
+The React development server will launch on https://localhost:3000 and will proxy requests to your NodeJS server that will be listening on https://localhost:3001. For development, purposes you DO NOT interact with the NodeJS server directly. Instead, you let the React development server proxy the requests to the NodeJS server.
 
 ---
 
