@@ -13,10 +13,8 @@ import logger from './logger';
 
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
-  // app.use(express.static('../client/build/'));
-}
+// For production only. For developing with React, you never interact with the server directly.
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.use(morgan('combined', { stream: logger.stream }));
 

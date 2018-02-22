@@ -20,7 +20,7 @@ class Title extends Component {
         this.setState({ text: payload });
       })
       .catch(error => {
-        throw new Error(error);
+        console.log(error);
       });
   }
 
