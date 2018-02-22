@@ -9,11 +9,11 @@ const defaultEndpoint = (req, res) => {
   res.json(`Your NodeJS server is running`);
 };
 
-const testEndpoint = (req, res) => {
-  res.json('Test endpoint');
+const reactEndpoint = (req, res) => {
+  res.json('Welcome to React/NodeJS');
 };
 
-router.get(`/test`, testEndpoint);
+router.get(`/react`, reactEndpoint);
 router.get(`/`, defaultEndpoint);
 
 export default router;
