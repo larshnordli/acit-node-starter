@@ -14,12 +14,10 @@ class Title extends Component {
       accept: 'application/json',
     })
       .then(response => {
-        // text.json();
         return response.json();
       })
       .then(payload => {
-        console.log(JSON.stringify(payload, null, 2));
-        this.setState({ text: payload.toString() });
+        this.setState({ text: payload });
       })
       .catch(error => {
         throw new Error(error);

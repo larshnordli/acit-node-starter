@@ -78,6 +78,6 @@
     "client": "node tools/startClient.js",
     "server": "node -r dotenv/config tools/run.js",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "start": "node build/server.js"
+    "start": "SET NODE_ENV=production && node build/server.js"
   }
 }

@@ -1,5 +1,6 @@
 /* @flow */
 
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
@@ -11,6 +12,11 @@ import router from './router';
 import logger from './logger';
 
 const app = express();
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../client/build')));
+  // app.use(express.static('../client/build/'));
+}
 
 app.use(morgan('combined', { stream: logger.stream }));
 

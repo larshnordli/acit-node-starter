@@ -10,7 +10,7 @@ const defaultEndpoint = (req, res) => {
 };
 
 const reactEndpoint = (req, res) => {
-  res.json('Welcome to React/NodeJS');
+  res.json(`Welcome to React/NodeJS`);
 };
 
 router.get(`/react`, reactEndpoint);
