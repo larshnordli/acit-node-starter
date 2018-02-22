@@ -17,9 +17,6 @@
     "jest": "^21.2.0",
     "morgan": "^1.9.0",
     "pretty-error": "^2.1.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
     "source-map-support": "^0.4.18",
     "supertest": "^3.0.0",
     "watson-developer-cloud": "^2.40.0",
@@ -80,7 +77,7 @@
     "debug": "node -r dotenv/config --inspect=0.0.0.0:9229  tools/run.js",
     "client": "node tools/startClient.js",
     "server": "node -r dotenv/config tools/run.js",
-    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "dev": "set HTTPS=true && concurrently \"yarn server\" \"yarn client\"",
     "start": "node build/server.js"
   }
 }
