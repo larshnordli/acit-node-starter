@@ -13,7 +13,7 @@ import logger from './logger';
 
 const app = express();
 
-// For production only. For developing with React, you never interact with the server directly.
+// For production only. For developing with React, you never interact with the server directly. Use the React proxy.
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.use(morgan('combined', { stream: logger.stream }));

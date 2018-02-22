@@ -1,0 +1,20 @@
+node_version=v8.9.4
+install_name=node-v8.9.4-linux-x64
+if [ ! -e $install_name.tar.gz ]; then
+wget "http://nodejs.org/dist/$node_version/$install_name.tar.gz"
+echo 'Untarring'
+tar xf $install_name.tar.gz
+fi
+NODE_8_INSTALL_DIR=`pwd`/$install_name/bin
+PATH=$NODE_8_INSTALL_DIR:$PATH
+node -v
+# Install Yarn
+npm install -g yarn
+# Install server dependencies
+yarn install
+# Build server
+yarn build
+# Installing client dependencies
+cd client && yarn install
+# Build client
+yarn build
