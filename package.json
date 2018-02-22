@@ -37,6 +37,7 @@
     "babel-preset-minify": "^0.2.0",
     "babel-register": "^6.26.0",
     "chokidar": "^1.7.0",
+    "concurrently": "^3.5.1",
     "del": "3.0.0",
     "eslint": "^4.7.2",
     "eslint-config-airbnb-base": "^12.0.1",
@@ -74,7 +75,9 @@
     "build": "node tools/build.js",
     "build-watch": "node tools/build.js --watch",
     "debug": "node -r dotenv/config --inspect=0.0.0.0:9229  tools/run.js",
-    "dev": "node -r dotenv/config tools/run.js",
+    "client": "node tools/startClient.js",
+    "server": "node -r dotenv/config tools/run.js",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
     "start": "node build/server.js"
   }
 }
