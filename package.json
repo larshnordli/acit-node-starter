@@ -18,18 +18,16 @@
     "winston-daily-rotate-file": "^1.7.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-jest": "^22.4.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-minify": "^0.3.0",
-    "babel-register": "^6.26.0",
+    "@babel/core": "7.0.0-beta.39",
+    "@babel/node": "7.0.0-beta.39",
+    "@babel/preset-env": "7.0.0-beta.39",
+    "@babel/preset-flow": "7.0.0-beta.39",
+    "@babel/preset-stage-2": "7.0.0-beta.39",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^8.1.2",
+    "babel-jest": "^22.0.4",
+    "babel-loader": "8.0.0-beta.0",
+    "browser-sync": "^2.21.0",
     "chokidar": "^2.0.2",
     "del": "3.0.0",
     "eslint": "^4.18.1",
@@ -39,12 +37,20 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-prettier": "^2.3.1",
     "flow-bin": "^0.66.0",
+    "glob": "^7.1.2",
     "husky": "^0.14.3",
     "jest": "^22.4.2",
     "jest-cli": "^22.4.2",
     "jest-tobetype": "^1.1.0",
     "lint-staged": "^7.0.0",
-    "prettier": "^1.7.1"
+    "mkdirp": "^0.5.1",
+    "prettier": "^1.7.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-dev-middleware": "^2.0.3",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/tools/jest.setup.js"
@@ -70,6 +76,6 @@
     "build-watch": "node tools/build.js --watch",
     "debug": "node --inspect=0.0.0.0:9229  tools/run.js",
     "dev": "node tools/run.js",
-    "start": "node build/server.js"
+    "start": "babel-node tools/run start"
   }
 }
