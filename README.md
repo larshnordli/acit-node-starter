@@ -2,6 +2,7 @@
 
 - [Overview](#overview)
   - [Technology Stack](#technology-stack)
+  - [About This Branch](#about-this-branch)
   - [Directory Layout](#directory-layout)
 - [Quickstart](#quickstart)
   - [Prerequisites](#prerequisites)
@@ -10,15 +11,18 @@
   - [How to debug](#how-to-debug)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
-- [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
 ## Overview
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
-This particular extension of the ACIT NodeJS Starter integrates with a React Client for a full stack application.
+This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
 
-This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter) and Facebook's [create-react-app (CRA)](https://github.com/facebook/create-react-app)
+## About This Branch
+
+This extension of ACIT NodeJS Starter integrates with a React Client for a full stack application. The React development server will launch on https://localhost:3000 and will proxy requests to your NodeJS server that will be listening on https://localhost:3001. For development purposes, you DO NOT interact with the NodeJS server directly. Instead, you let the React development server proxy the requests to the NodeJS server.
+
+For more information on the React configuration and tooling used in this branch, visit Facebook's [create-react-app (CRA)](https://github.com/facebook/create-react-app)
 
 ### Technology Stack
 
@@ -59,12 +63,12 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 4) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
 ### Getting started
+
 Clone this project and host the code either on Github or IBM's Git repository
 
 `git clone https://github.com/brian-leppez/acit-node-starter <your-project-name>`
 
 `cd <your-project-name>`
-
 
 Install Server Dependencies (NodeJS)
 
@@ -73,15 +77,12 @@ Install Server Dependencies (NodeJS)
 Install Client Dependencies (React)
 
 `cd client`
+
 `yarn install`
 
-To build the project and launch a development server with hot reload. Go back to your project root.
+To build the project and launch a development server with hot reload.
 
-`yarn dev`
-
-IMPORTANT
-
-The React development server will launch on https://localhost:3000 and will proxy requests to your NodeJS server that will be listening on https://localhost:3001. For development, purposes you DO NOT interact with the NodeJS server directly. Instead, you let the React development server proxy the requests to the NodeJS server.
+`yarn dev` (on the the project's root directory)
 
 ---
 
