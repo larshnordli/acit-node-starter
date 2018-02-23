@@ -58,7 +58,10 @@ app.use(
 app.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
   if (err instanceof Jwt401Error) {
-    logger.error('[express-jwt-error]');
+    logger.error(
+      '[express-jwt-error]',
+      req.headers.authorization.split(' ')[1],
+    );
     res.status(401).send('Invalid token');
   }
   next(err);
