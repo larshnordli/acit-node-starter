@@ -36,8 +36,10 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ```bash
 .
 ├── /build/                     # The compiled output (via Babel)
+├── /public                     # Basic Watson Conversation front-end client
 ├── /src/                       # Node.js application source files
-│   ├── /__tests__/             # Application tests
+│   ├── /__tests__/             # Jest unit, integration, and smoke tests.
+│   ├── /lib/                   # IBM Cloud controllers
 │   ├── /routes/                # Express endpoints
 │   ├── /app.js                 # Express.js application
 │   ├── /config.js              # Specific application configuration information
