@@ -16,7 +16,9 @@
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
-This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
+This particular extension of the ACIT NodeJS Starter integrates with a React Client for a full stack application.
+
+This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter) and Facebook's [create-react-app (CRA)](https://github.com/facebook/create-react-app)
 
 ### Technology Stack
 
@@ -27,6 +29,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 [Prettier](https://prettier.io/) — Core platform and web tools
 * [Express](https://expressjs.com/), 
 [Router](https://expressjs.com/en/guide/routing.html), [cors](https://github.com/expressjs/cors) — Common HTTP server features.
+* [React](https://reactjs.org/) — Front-end library
 * [Jest](http://facebook.github.io/jest/) - Unit and snapshot testing
 
 ### Directory Layout
@@ -100,13 +103,3 @@ For more information visit http://facebook.github.io/jest/
 ## Demos
 
  Pending
-
-
-## Reference Articles and Tutorials
-
-* [Working with Delivery Pipelines](https://console.bluemix.net/docs/services/ContinuousDelivery/pipeline_working.html#pipeline-working)
-* [Stop using JWT for sesstions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
-  ([part 2](http://cryto.net/~joepie91/blog/2016/06/19/stop-using-jwt-for-sessions-part-2-why-your-solution-doesnt-work/))
-  by [Sven Slootweg](https://github.com/joepie91)
-* [How to Safely Store Your Users' Passwords](https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016) by [P.I.E.](https://paragonie.com/)
-
