@@ -22,7 +22,6 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 
 This extension of ACIT NodeJS Starter protects its endpoints with JWT. To obtain a JWT, you must make POST request to the `/authenticate` endpoint with a Basic Authentication header. It will obtain a username and password and look for a user in the `db/` folder. Once authenticated, it will return a JWT in the response. The client must store this JWT (HTML5 Session Storage) and use this JWT for every subsequent call to ACIT NodeJS via the Bearer Authentication header. If ACIT NodeJS Starter can't recognize a JWT or finds an invalid or expired token, it will return a 401 status code.
 
-
 ### Technology Stack
 
 * [NodeJS](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/en/), [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript),
