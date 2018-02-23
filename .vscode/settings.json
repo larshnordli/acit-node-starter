@@ -5,6 +5,13 @@
   "javascript.validate.enable": false,
   "prettier.eslintIntegration": true,
   "vsicons.presets.angular": false,
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "window.zoomLevel": 1,
+  "editor.tabSize": 2,
+  "window.restoreWindows": "all",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.tabCompletion": true,
   "search.exclude": {
     "**/build": true,
     "**/node_modules": true

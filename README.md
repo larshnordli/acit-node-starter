@@ -1,6 +1,7 @@
 # Table of Contents
 
 - [Overview](#overview)
+  - [About This Branch](#about-this-branch)
   - [Technology Stack](#technology-stack)
   - [Directory Layout](#directory-layout)
 - [Quickstart](#quickstart)
@@ -12,13 +13,20 @@
     - [Delivery Pipeline](#delivery-pipeline)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
-- [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
 # Overview
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
 This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
+
+## About This Branch
+
+This extension of ACIT NodeJS Starter utilizes a Watson Conversation service. To utilize this service, you need to provide the environment variables needed to access that service. For development, rename `env.example` to `.env` and set your environment variables. Your environment variables will be read by the application at runtime by the `dotenv` npm package (see package.json scripts).
+
+You never check in service credentials to a code repository.
+
+For production, you need to set those variables using a manifest.yaml, CF CLI or in the Deploy stage of a Delivery Pipeline.
 
 ## Technology Stack
 
@@ -75,15 +83,6 @@ To build the project and launch a development server with hot reload.
 `yarn dev`
 
 The NodeJS server will be listening on https://localhost:3000
-
-
-IMPORTANT
-
-This extension of ACIT NodeJS Starter utilizes a Watson Conversation service. To utilize this service, you need to provide the environment variables needed to access that service. For development, rename `env.example` to `.env` and set your environment variables. Your environment variables will be read by the application at runtime by the `dotenv` npm package (see package.json scripts).
-
-YOU NEVER CHECK IN SERVICE CREDENTIALS INTO A CODE REPOSITORY.
-
-For production, you need to set those variables using a manifest.yaml, CF CLI or in the Deploy stage of a Delivery Pipeline.
 
 ---
 
