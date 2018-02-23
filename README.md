@@ -16,6 +16,8 @@
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
+This extension of ACIT NodeJS Starter protects its endpoints with JWT. To obtain a JWT, you must make POST request to the `/authenticate` endpoint with a Basic Authentication header. It will obtain a username and password and look for a user in the `db/` folder. Once authenticated, it will return a JWT in the response. The client must store this JWT (HTML5 Session Storage) and use this JWT for every subsequent call to ACIT NodeJS via the Bearer Authentication header. If ACIT NodeJS Starter can't recognize a JWT or finds an invalid or expired token, it will return a 401 status code.
+
 This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
 
 ### Technology Stack
@@ -36,6 +38,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 ├── /build/                     # The compiled output (via Babel)
 ├── /src/                       # Node.js application source files
 │   ├── /__tests__/             # Application tests
+│   ├── /db/                    # "Database" of authenticated users. 
 │   ├── /app.js                 # Express.js application
 │   ├── /config.js              # Specific application configuration information
 │   ├── /logger.js              # Application information logger 
@@ -73,6 +76,10 @@ The NodeJS server will be listening on https://localhost:3000
 
 ---
 
+### How to use authentication
+
+
+
 ### How to test
 
 ```bash
@@ -93,12 +100,4 @@ For more information visit http://facebook.github.io/jest/
 
  Pending
 
-
-## Reference Articles and Tutorials
-
-* [Working with Delivery Pipelines](https://console.bluemix.net/docs/services/ContinuousDelivery/pipeline_working.html#pipeline-working)
-* [Stop using JWT for sesstions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
-  ([part 2](http://cryto.net/~joepie91/blog/2016/06/19/stop-using-jwt-for-sessions-part-2-why-your-solution-doesnt-work/))
-  by [Sven Slootweg](https://github.com/joepie91)
-* [How to Safely Store Your Users' Passwords](https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016) by [P.I.E.](https://paragonie.com/)
 
