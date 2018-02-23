@@ -10,7 +10,6 @@
   - [How to debug](#how-to-debug)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
-- [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
 ## Overview
 
@@ -94,13 +93,4 @@ For more information visit http://facebook.github.io/jest/
 ## Demos
 
  Pending
-
-
-## Reference Articles and Tutorials
-
-* [Working with Delivery Pipelines](https://console.bluemix.net/docs/services/ContinuousDelivery/pipeline_working.html#pipeline-working)
-* [Stop using JWT for sesstions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
-  ([part 2](http://cryto.net/~joepie91/blog/2016/06/19/stop-using-jwt-for-sessions-part-2-why-your-solution-doesnt-work/))
-  by [Sven Slootweg](https://github.com/joepie91)
-* [How to Safely Store Your Users' Passwords](https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016) by [P.I.E.](https://paragonie.com/)
 
