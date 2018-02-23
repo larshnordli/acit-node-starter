@@ -6,7 +6,7 @@ const router = new Router();
 
 // Register your routes and middleware to handle them here!!
 const defaultEndpoint = (req, res) => {
-  res.send(`Your NodeJS server is running`);
+  res.json(`Your NodeJS server is running`);
 };
 
 router.get(`/`, defaultEndpoint);
