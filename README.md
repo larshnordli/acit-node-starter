@@ -56,6 +56,7 @@ For examples on how this application can be used to implement a use case, please
 4) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
 ### Getting started
+
 Clone this project and host the code either on Github or IBM's Git repository
 
 `git clone https://github.com/brian-leppez/acit-node-starter <your-project-name>`
