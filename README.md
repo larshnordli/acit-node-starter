@@ -1,6 +1,7 @@
 # ACIT NodeJS Starter
 
 - [Overview](#overview)
+  - [About This Branch](#about-this-branch)
   - [Technology Stack](#technology-stack)
   - [Directory Layout](#directory-layout)
 - [Quickstart](#quickstart)
@@ -10,15 +11,17 @@
   - [How to debug](#how-to-debug)
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
-- [Reference Articles and Tutorials](#reference-articles-and-tutorials)
 
 ## Overview
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
+This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
+
+### About This Branch
+
 This extension of ACIT NodeJS Starter protects its endpoints with JWT. To obtain a JWT, you must make POST request to the `/authenticate` endpoint with a Basic Authentication header. It will obtain a username and password and look for a user in the `db/` folder. Once authenticated, it will return a JWT in the response. The client must store this JWT (HTML5 Session Storage) and use this JWT for every subsequent call to ACIT NodeJS via the Bearer Authentication header. If ACIT NodeJS Starter can't recognize a JWT or finds an invalid or expired token, it will return a 401 status code.
 
-This project was forked and based on Kriasoft's [NodeJS API Starter Project](https://github.com/kriasoft/nodejs-api-starter)
 
 ### Technology Stack
 
@@ -58,6 +61,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 4) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
 ### Getting started
+
 Clone this project and host the code either on Github or IBM's Git repository
 
 `git clone https://github.com/brian-leppez/acit-node-starter <your-project-name>`
@@ -75,10 +79,6 @@ To build the project and launch a development server with hot reload.
 The NodeJS server will be listening on https://localhost:3000
 
 ---
-
-### How to use authentication
-
-
 
 ### How to test
 
