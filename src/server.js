@@ -15,12 +15,23 @@ process.on('unhandledRejection', (reason, p) => {
   // send entire app down. Process manager will restart it
   process.exit(1);
 });
+
 const app = express();
 
-app.use(morgan('combined', { stream: logger.stream }));
-
+//
+// If you are using proxy from external machine, you can set TRUST_PROXY env
+// Default is to trust proxy headers only from loopback interface.
+// -----------------------------------------------------------------------------
 app.set('trust proxy', 'loopback');
 
+//
+// Logging for network requests to Node.js
+// -----------------------------------------------------------------------------
+app.use(morgan('combined', { stream: logger.stream }));
+
+//
+// Register Node.js middleware
+// -----------------------------------------------------------------------------
 app.use(
   cors({
     origin(origin, next) {
@@ -32,7 +43,6 @@ app.use(
     credentials: true,
   }),
 );
-
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,6 +50,9 @@ app.use(bodyParser.json());
 
 app.use(router);
 
+//
+// Error handling
+// -----------------------------------------------------------------------------
 const pe = new PrettyError();
 pe.skipNodeFiles();
 pe.skipPackage('express');
@@ -53,7 +66,9 @@ app.use((err, req, res, next) => {
   res.send();
 });
 
-// Launch Node.js server
+//
+// Launch the server
+// -----------------------------------------------------------------------------
 if (!module.hot) {
   app.listen(config.port, () => {
     console.info(`The server is running at http://localhost:${config.port}/`);

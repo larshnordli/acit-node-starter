@@ -11,7 +11,7 @@
 - [API Documentation](#api-documentation)
 - [Demos](#demos)
 
-## Overview
+## Overview  :notebook:
 
 The ACIT NodeJS Starter is a boilerplate and tooling application for bootstrapping [NodeJS](https://nodejs.org/en/) infrastructures with a focus on [IBM Cloud](https://www.ibm.com/cloud/) technologies. It is best suited for developing REST APIs as a stand-alone (micro)service, backing up mobile or web front-ends (See [acit-ng-seed](https://git.ng.bluemix.net/ruben.gomez/acit-ng-seed)). For more information about the ACIT, please visit [us](https://in.accenture.com/ibm/).
 
@@ -19,7 +19,7 @@ This project was forked and based on Kriasoft's [NodeJS API Starter Project](htt
 
 For examples on how this application can be used to implement a use case, please check out one of our Github branches.
 
-### Technology Stack
+### Technology Stack  :wrench:
 
 * [NodeJS](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/en/), [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript),
 [Babel](http://babeljs.io/), 
@@ -30,7 +30,7 @@ For examples on how this application can be used to implement a use case, please
 [Router](https://expressjs.com/en/guide/routing.html), [cors](https://github.com/expressjs/cors) — Common HTTP server features.
 * [Jest](http://facebook.github.io/jest/) - Unit and snapshot testing
 
-### Directory Layout
+### Directory Layout  :books:
 
 ```bash
 .
@@ -46,16 +46,16 @@ For examples on how this application can be used to implement a use case, please
 ├── package.json                # List of project dependencies
 ```
 
-## Quickstart
+## Quickstart  :pencil2:
 
-### Prerequisites
+### Prerequisites  :heavy_check_mark:
 
 1) NodeJS [8.9.4](https://nodejs.org/en/download/) or above
 2) [Yarn](https://yarnpkg.com/en/docs/install) 
 3) (Windows only) Download and install the [Visual C++ 2017 Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools)
 4) Highly recommended: [Visual Studio Code](https://code.visualstudio.com/) Extensions: EditorConfig, ESLint, Flow and Prettier.
 
-### Getting started
+### Getting started  :checkered_flag:
 
 Clone this project and host the code either on Github or IBM's Git repository
 
@@ -75,7 +75,7 @@ The NodeJS server will be listening on https://localhost:3000
 
 ---
 
-### How to test
+### How to test  :mag:
 
 ```bash
 yarn lint              # Find problematic patterns in code
@@ -87,11 +87,11 @@ With Visual Studio Code's debugger you can also launch Jest in debug mode with t
 
 For more information visit http://facebook.github.io/jest/
 
-## API Documentation
+## API Documentation  :newspaper:
 
  Pending
 
-## Demos
+## Demos  :slot_machine:
 
  Pending
 
