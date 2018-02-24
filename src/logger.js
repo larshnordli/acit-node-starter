@@ -1,8 +1,7 @@
-// eslint-disable global-require
-const fs = require('fs');
-const path = require('path');
-const winston = require('winston');
-const WinstonRotateFile = require('winston-daily-rotate-file');
+import fs from 'fs';
+import path from 'path';
+import winston from 'winston';
+import WinstonRotateFile from 'winston-daily-rotate-file';
 
 const logDirectory = '../logs';
 const logFilename = path.resolve(logDirectory, `${logDirectory}/-logfile.log`);
@@ -40,4 +39,4 @@ logger.stream = {
   },
 };
 
-module.exports = logger;
+export default logger;

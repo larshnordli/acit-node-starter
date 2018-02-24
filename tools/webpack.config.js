@@ -7,7 +7,7 @@ import pkg from '../package.json';
 const isDebug = !process.argv.includes('--release');
 const isVerbose = process.argv.includes('--verbose');
 
-const reScript = /\.(js|jsx|mjs)$/;
+const reScript = /\.(js|mjs)$/;
 
 const config = {
   context: path.resolve(__dirname, '..'),
@@ -36,7 +36,7 @@ const config = {
     strictExportPresence: true,
 
     rules: [
-      // Rules for JS / JSX
+      // Rules for JS
       {
         test: reScript,
         include: [

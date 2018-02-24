@@ -46,9 +46,11 @@ pe.skipPackage('express');
 pe.withoutColors(); // So that logfile output is clean.
 pe.start(); // Ensures that PrettyError is used app-wide.
 
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  process.stderr.write(pe.render(err));
-  next();
+  logger.error(pe.render(err));
+  res.status(500);
+  res.send();
 });
 
 // Launch Node.js server

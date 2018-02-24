@@ -31,7 +31,7 @@
     "chokidar": "^2.0.2",
     "del": "3.0.0",
     "eslint": "^4.18.1",
-    "eslint-config-airbnb-base": "^12.0.1",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.9.0",
@@ -69,10 +69,8 @@
     "check": "flow check",
     "test": "jest",
     "test-watch": "jest --watch",
-    "build": "babel-node tools/run build",
-    "build-watch": "node tools/build.js --watch",
-    "debug": "node --inspect=0.0.0.0:9229  tools/run.js",
-    "dev": "node tools/run.js",
+    "build": "jest && babel-node tools/run build --release",
+    "debug": "babel-node --inspect=0.0.0.0:9229  tools/run start",
     "start": "babel-node tools/run start"
   }
 }

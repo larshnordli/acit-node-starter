@@ -1,2 +1,4 @@
 public/*
-!babelrc.js
+!.babelrc.js
+!.eslintrc.js
+build/

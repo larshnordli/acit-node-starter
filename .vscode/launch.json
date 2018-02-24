@@ -16,11 +16,11 @@
       "name": "Debug",
       "type": "node",
       "request": "attach",
-      "port": 9230,
+      "port": 9229,
       "protocol": "inspector",
-      "sourceMaps": true,
-      "localRoot": "${workspaceRoot}",
-      "outFiles": ["${workspaceFolder}/{build}/**/*.js.map"]
+      // "sourceMaps": true,
+      "localRoot": "${workspaceRoot}"
+      // "outFiles": ["${workspaceFolder}/{build}/**/*.js"]
     },
 
     {
