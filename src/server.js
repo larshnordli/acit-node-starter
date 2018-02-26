@@ -80,7 +80,10 @@ if (!module.hot) {
 // -----------------------------------------------------------------------------
 if (module.hot) {
   app.hot = module.hot;
-  module.hot.accept('./router');
+  module.hot.accept('./router', () => {
+    /* eslint-disable-next-line global-require */
+    router = require('./router');
+  });
 }
 
 export default app;
