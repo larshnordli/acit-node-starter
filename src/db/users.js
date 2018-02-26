@@ -16,12 +16,18 @@ const records = [
 ];
 
 exports.findByUsername = (username, cb) => {
-  process.nextTick(() => {
-    /* eslint-disable consistent-return */
-    records.forEach(record => {
-      if (record.username === username) {
-        return cb(null, record);
-      }
+  try {
+    process.nextTick(() => {
+      /* eslint-disable consistent-return */
+      records.forEach(record => {
+        if (record.username === username) {
+          return cb(null, record);
+        }
+      });
+      return cb(null, null);
     });
-  });
+    return cb(null, null);
+  } catch (err) {
+    return cb(err);
+  }
 };
