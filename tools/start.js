@@ -58,7 +58,6 @@ async function start() {
 
   // Configure server-side hot module replacement
   const serverConfig = webpackConfig;
-  // const serverConfig = webpackConfig.find(config => config.name === 'server');
   serverConfig.output.hotUpdateMainFilename = 'updates/[hash].hot-update.json';
   serverConfig.output.hotUpdateChunkFilename =
     'updates/[id].[hash].hot-update.js';
@@ -73,10 +72,6 @@ async function start() {
 
   // Configure compilation
   await run(clean);
-  // const multiCompiler = webpack(webpackConfig);
-  // const serverCompiler = multiCompiler.compilers.find(
-  //   compiler => compiler.name === 'server',
-  // );
   const serverCompiler = webpack(webpackConfig);
   const serverPromise = createCompilationPromise(
     'server',

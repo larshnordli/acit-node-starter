@@ -1,32 +1,33 @@
 import path from 'path';
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
-import overrideRules from './lib/overrideRules';
 import pkg from '../package.json';
 
 const isDebug = !process.argv.includes('--release');
-const isVerbose = process.argv.includes('--verbose');
 
 const reScript = /\.(js|mjs)$/;
 
+//
+// Configuration for the server
+// -----------------------------------------------------------------------------
 const config = {
+  name: 'server',
+  target: 'node',
+
+  entry: {
+    server: ['./src/server.js'],
+  },
+
   context: path.resolve(__dirname, '..'),
 
   output: {
-    path: path.resolve(__dirname, '../build/public/assets'),
-    publicPath: '/assets/',
-    pathinfo: isVerbose,
-    filename: isDebug ? '[name].js' : '[name].[chunkhash:8].js',
-    chunkFilename: isDebug
-      ? '[name].chunk.js'
-      : '[name].[chunkhash:8].chunk.js',
-    // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    path: path.resolve(__dirname, '../build'),
+    filename: '[name].js',
+    libraryTarget: 'commonjs2',
   },
 
   resolve: {
-    // Allow absolute paths in imports, e.g. import Button from 'components/Button'
+    // Allow absolute paths in imports
     // Keep in sync with .flowconfig and .eslintrc
     modules: ['node_modules', 'src'],
   },
@@ -57,8 +58,7 @@ const config = {
               '@babel/preset-env',
               {
                 targets: {
-                  browsers: pkg.browserslist,
-                  forceAllTransforms: !isDebug, // for UglifyJS
+                  node: pkg.engines.node.match(/(\d+\.?)+/)[0],
                 },
                 modules: false,
                 useBuiltIns: false,
@@ -82,88 +82,13 @@ const config = {
 
   cache: isDebug,
 
-  // Specify what bundle information gets displayed
-  // https://webpack.js.org/configuration/stats/
-  stats: {
-    cached: isVerbose,
-    cachedAssets: isVerbose,
-    chunks: isVerbose,
-    chunkModules: isVerbose,
-    colors: true,
-    hash: isVerbose,
-    modules: isVerbose,
-    reasons: isDebug,
-    timings: true,
-    version: isVerbose,
-  },
+  stats: 'none',
 
   // Choose a developer tool to enhance debugging
   // https://webpack.js.org/configuration/devtool/#devtool
   devtool: isDebug ? 'cheap-module-inline-source-map' : 'source-map',
-};
 
-//
-// Configuration for the server-side bundle (server.js)
-// -----------------------------------------------------------------------------
-
-const serverConfig = {
-  ...config,
-
-  name: 'server',
-  target: 'node',
-
-  entry: {
-    server: ['./src/server.js'],
-  },
-
-  output: {
-    ...config.output,
-    path: path.resolve(__dirname, '../build'),
-    filename: '[name].js',
-    chunkFilename: 'chunks/[name].js',
-    libraryTarget: 'commonjs2',
-  },
-
-  // Webpack mutates resolve object, so clone it to avoid issues
-  // https://github.com/webpack/webpack/issues/4817
-  resolve: {
-    ...config.resolve,
-  },
-
-  module: {
-    ...config.module,
-
-    rules: overrideRules(config.module.rules, rule => {
-      // Override babel-preset-env configuration for Node.js
-      if (rule.loader === 'babel-loader') {
-        return {
-          ...rule,
-          options: {
-            ...rule.options,
-            presets: rule.options.presets.map(
-              preset =>
-                preset[0] !== '@babel/preset-env'
-                  ? preset
-                  : [
-                      '@babel/preset-env',
-                      {
-                        targets: {
-                          node: pkg.engines.node.match(/(\d+\.?)+/)[0],
-                        },
-                        modules: false,
-                        useBuiltIns: false,
-                        debug: false,
-                      },
-                    ],
-            ),
-          },
-        };
-      }
-      return rule;
-    }),
-  },
-
-  externals: ['./assets.json', nodeExternals()],
+  externals: [nodeExternals()],
 
   plugins: [
     // Define free variables
@@ -181,9 +106,6 @@ const serverConfig = {
       raw: true,
       entryOnly: false,
     }),
-    new webpack.DefinePlugin({
-      'process.browser': JSON.stringify(true),
-    }),
   ],
 
   // Do not replace node globals with polyfills
@@ -198,4 +120,4 @@ const serverConfig = {
   },
 };
 
-export default serverConfig;
+export default config;

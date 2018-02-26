@@ -37,11 +37,10 @@ For examples on how this application can be used to implement a use case, please
 ├── /build/                     # The compiled output (via Babel)
 ├── /src/                       # Node.js application source files
 │   ├── /__tests__/             # Application tests
-│   ├── /app.js                 # Express.js application
 │   ├── /config.js              # Specific application configuration information
 │   ├── /logger.js              # Application information logger 
 │   ├── /router.js              # Express endpoints router
-│   └── /server.js              # Node.js server (entry point)
+│   └── /server.js              # Express.js server (entry point)
 ├── /tools/                     # Build automation scripts and utilities
 ├── package.json                # List of project dependencies
 ```
