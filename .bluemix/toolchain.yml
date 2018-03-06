@@ -16,7 +16,7 @@ backend-repo:
   service_id: hostedgit
   parameters:
     repo_name: "{{name}}-backend"
-    repo_url: https://github.com/brian-leppez/acit-node-starter
+    repo_url: https://github.com/larshnordli/acit-node-starter
     type: clone
     has_issues: true
 
