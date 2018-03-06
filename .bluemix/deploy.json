@@ -37,7 +37,7 @@
     {
       "type": "text",
       "readonly": false,
-      "title": "Backend App Name",
+      "title": "The name of the backend application",
       "key": "backend-prod-app-name"
     },
     {

@@ -50,5 +50,6 @@ backend-deploy:
     prod-region: "{{region}}"
     prod-organization: "{{organization}}"
     prod-space: "{{space}}"
-    backend-prod-app-name: "{{backend-repo.parameters.repo_name}}"
+    #backend-prod-app-name: "{{backend-repo.parameters.repo_name}}"
+    backend-prod-app-name: "{{name}}-backend"
     cors-origin: "{{cors_origin}}"
