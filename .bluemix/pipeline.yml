@@ -49,7 +49,7 @@ stages:
     value: ${CORS_ORIGIN}
     type: text
   jobs:
-  - name: Deploy Test
+  - name: Deploy to Staging
     type: deployer
     target:
       region_id: ${BE_PROD_REGION_ID}
@@ -58,7 +58,7 @@ stages:
       application: ${BE_CF_TEST_APP_NAME}
     script: |
       #!/bin/bash
-     cf push "${CF_APP}"
+      cf push "${CF_APP}"
 - name: Production Environment
   inputs:
   - type: job
@@ -78,7 +78,7 @@ stages:
     value: ${CORS_ORIGIN}
     type: text
   jobs:
-  - name: Deploy Test
+  - name: Deploy to Production
     type: deployer
     target:
       region_id: ${BE_PROD_REGION_ID}
@@ -87,7 +87,7 @@ stages:
       application: ${BE_CF_APP_NAME}
     script: |
       #!/bin/bash
-     cf push "${CF_APP}"
+      cf push "${CF_APP}"
 hooks:
 - enabled: true
   label: null
