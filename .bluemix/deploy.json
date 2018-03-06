@@ -23,6 +23,10 @@
     "backend-prod-app-name": {
       "description": "The name of your Backend app",
       "type": "string"
+    },
+    "cors_origin": {
+      "description": "Add the URL of the frontend for whitelisting",
+      "type": "string"
     }
   },
   "required": ["prod-region", "prod-organization", "prod-space", "backend-prod-app-name"],
