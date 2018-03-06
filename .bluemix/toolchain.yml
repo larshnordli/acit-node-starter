@@ -1,0 +1,55 @@
+default_locale: en
+locales:
+   $ref: locales.yml
+name: "ACIT Node Starter Setup"
+description: "Includes creation of one code repo and one delivery pipeline, ready for app creation and IBM Cloud deployment."
+version: 0.1
+image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
+icon: data:image/svg+xml;base64,$file(icon.svg,base64)
+required:
+ - backend-repo
+ - backend-build
+ - backend-deploy
+
+# Github repo: Backend
+backend-repo:
+  service_id: hostedgit
+  parameters:
+    repo_name: "{{name}}-backend"
+    repo_url: https://github.com/brian-leppez/acit-node-starter
+    type: clone
+    has_issues: true
+
+# Pipelines
+backend-build:
+  service_id: pipeline
+  parameters:
+    name: "{{name}}-backend"
+    ui-pipeline: true
+    configuration:
+     content: $file(pipeline.yml)
+     env:
+      BACKEND_REPO: "backend-repo"
+      BE_CF_APP_NAME: "{{backend-deploy.parameters.backend-prod-app-name}}"
+      BE_CF_TEST_APP_NAME: "{{backend-deploy.parameters.backend-prod-app-name}}-stage"
+      BE_PROD_SPACE_NAME: "{{backend-deploy.parameters.prod-space}}"
+      BE_PROD_ORG_NAME: "{{backend-deploy.parameters.prod-organization}}"
+      BE_PROD_REGION_ID: "{{backend-deploy.parameters.prod-region}}"
+      CUSTOM_APP_NAME: "{{name}}"
+      CORS_ORIGIN: "{{cors_origin}}"
+      HTTPS: TRUE
+     execute: true
+    services: ["backend-repo"]
+  hidden: [form, description]
+
+#Deployment Backend
+backend-deploy:
+  schema:
+    $ref: deploy.json
+  service-category: pipeline
+  parameters:
+    prod-region: "{{region}}"
+    prod-organization: "{{organization}}"
+    prod-space: "{{space}}"
+    backend-prod-app-name: "{{backend-repo.parameters.repo_name}}"
+    cors-origin: "{{cors_origin}}"
