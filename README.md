@@ -60,7 +60,7 @@ For examples on how this application can be used to implement a use case, please
 #### Deploy on IBM Cloud
 This repo will be cloned and the cloned repo will be available on your GitLab account. In addition, this feature creates 1 toolchain and 1 delivery pipeline with a Staging environment and production environment. Upon creation of the toolchain, you can also add the CORS Origin, in other words what frontend url you want to allow for communication.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/larshnordli/acit-node-starter)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/larshnordli/acit-node-starter&branch=development)
 
 #### Locally
 

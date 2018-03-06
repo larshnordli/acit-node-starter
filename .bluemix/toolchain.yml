@@ -3,8 +3,7 @@ locales:
    $ref: locales.yml
 name: "ACIT Node Starter Setup"
 description: "Includes creation of one code repo and one delivery pipeline, ready for app creation and IBM Cloud deployment."
-version: 0.1
-image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
+version: 1.0
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)
 required:
  - repo
