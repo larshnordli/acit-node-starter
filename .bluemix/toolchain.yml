@@ -7,12 +7,12 @@ version: 0.1
 image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)
 required:
- - backend-repo
- - backend-build
- - backend-deploy
+ - repo
+ - build
+ - deploy
 
 # Github repo: Backend
-backend-repo:
+repo:
   service_id: hostedgit
   parameters:
     repo_name: "{{name}}-backend"
@@ -21,7 +21,7 @@ backend-repo:
     has_issues: true
 
 # Pipelines
-backend-build:
+build:
   service_id: pipeline
   parameters:
     name: "{{name}}-backend"
@@ -43,7 +43,7 @@ backend-build:
   hidden: [form, description]
 
 #Deployment Backend
-backend-deploy:
+deploy:
   schema:
     $ref: deploy.json
   service-category: pipeline

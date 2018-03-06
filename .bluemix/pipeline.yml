@@ -58,7 +58,7 @@ stages:
       application: ${BE_CF_TEST_APP_NAME}
     script: |
       #!/bin/bash
-     cf push "${CF_APP}" -b nodejs_buildpack
+     cf push "${CF_APP}"
 - name: Production Environment
   inputs:
   - type: job
@@ -87,7 +87,7 @@ stages:
       application: ${BE_CF_APP_NAME}
     script: |
       #!/bin/bash
-     cf push "${CF_APP}" -b nodejs_buildpack
+     cf push "${CF_APP}"
 hooks:
 - enabled: true
   label: null
