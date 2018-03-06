@@ -3,7 +3,7 @@ stages:
 - name: Build Stage
   inputs:
   - type: git
-    branch: master
+    branch: development
     service: ${BACKEND_REPO}
     dir_name: null
   triggers:
@@ -43,7 +43,7 @@ stages:
     value: ${CUSTOM_APP_NAME}
     type: text
   - name: HTTPS
-    value: TRUE
+    value: true
     type: bool
   - name: CORS_ORIGIN
     value: ${CORS_ORIGIN}
@@ -51,12 +51,14 @@ stages:
   jobs:
   - name: Deploy to Staging
     type: deployer
+    deploy_permission: DEV_IN_SPACE
+    deploy_type: cf
     target:
       region_id: ${BE_PROD_REGION_ID}
       organization: ${BE_PROD_ORG_NAME}
       space: ${BE_PROD_SPACE_NAME}
       application: ${BE_CF_TEST_APP_NAME}
-    script: |
+    script: |-
       #!/bin/bash
       cf push "${CF_APP}"
 - name: Production Environment
@@ -72,7 +74,7 @@ stages:
     value: ${CUSTOM_APP_NAME}
     type: text
   - name: HTTPS
-    value: TRUE
+    value: true
     type: bool
   - name: CORS_ORIGIN
     value: ${CORS_ORIGIN}
@@ -80,16 +82,18 @@ stages:
   jobs:
   - name: Deploy to Production
     type: deployer
+    deploy_permission: DEV_IN_SPACE
+    deploy_type: cf
     target:
       region_id: ${BE_PROD_REGION_ID}
       organization: ${BE_PROD_ORG_NAME}
       space: ${BE_PROD_SPACE_NAME}
       application: ${BE_CF_APP_NAME}
-    script: |
+    script: |-
       #!/bin/bash
       cf push "${CF_APP}"
 hooks:
 - enabled: true
   label: null
-  ssl_enabled: false
+  ssl_enabled: true
   url: https://devops-api.ng.bluemix.net/v1/messaging/webhook/publish
