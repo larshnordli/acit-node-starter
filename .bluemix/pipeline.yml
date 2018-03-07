@@ -51,6 +51,7 @@ stages:
   jobs:
   - name: Deploy to Staging
     type: deployer
+    deploy_permission: TOOLCHAIN_MEMBERS
     deploy_type: cf
     target:
       region_id: ${BE_PROD_REGION_ID}
@@ -81,7 +82,7 @@ stages:
   jobs:
   - name: Deploy to Production
     type: deployer
-    deploy_permission: DEV_IN_SPACE
+    deploy_permission: TOOLCHAIN_MEMBERS
     deploy_type: cf
     target:
       region_id: ${BE_PROD_REGION_ID}
@@ -95,4 +96,4 @@ hooks:
 - enabled: true
   label: null
   ssl_enabled: false
-  url: https://devops-api.ng.bluemix.net/v1/messaging/webhook/publish
+  url: https://devops-api.eu-gb.bluemix.net/v1/messaging/webhook/publish
