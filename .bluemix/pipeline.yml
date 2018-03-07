@@ -13,23 +13,22 @@ stages:
     type: builder
     artifact_dir: ''
     build_type: npm
-    script: |-
-      #!/bin/bash
-      # Specify and install Node version  
-      node_version=v8.9.4
-      install_name=node-v8.9.4-linux-x64
-      if [ ! -e $install_name.tar.gz ]; then
-        wget "http://nodejs.org/dist/$node_version/$install_name.tar.gz"
-        echo 'Untarring'
-        tar xf $install_name.tar.gz
-      fi
-      NODE_8_INSTALL_DIR=`pwd`/$install_name/bin
-      PATH=$NODE_8_INSTALL_DIR:$PATH
-      # Verifying that Node version is correct
-      node -v 
-      npm install -g yarn
-      yarn install
-      yarn build
+    script: "#!/bin/bash
+# Specify and install Node version
+node_version=v8.9.4
+install_name=node-v8.9.4-linux-x64
+if [ ! -e $install_name.tar.gz ]; then
+wget "http://nodejs.org/dist/$node_version/$install_name.tar.gz"
+echo 'Untarring'
+tar xf $install_name.tar.gz
+fi
+NODE_8_INSTALL_DIR=`pwd`/$install_name/bin
+PATH=$NODE_8_INSTALL_DIR:$PATH
+# Verifying that Node version is correct
+node -v
+npm install -g yarn
+yarn install
+yarn build"
 - name: Staging Environment
   inputs:
   - type: job
@@ -39,7 +38,7 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: CUSTOM_APP_NAME 
+  - name: CUSTOM_APP_NAME
     value: ${CUSTOM_APP_NAME}
     type: text
   - name: HTTPS
@@ -51,49 +50,49 @@ stages:
   jobs:
   - name: Deploy to Staging
     type: deployer
-    deploy_permission: DEV_IN_SPACE
+    deploy_permission: TOOLCHAIN_MEMBERS
     deploy_type: cf
     target:
       region_id: ${BE_PROD_REGION_ID}
       organization: ${BE_PROD_ORG_NAME}
       space: ${BE_PROD_SPACE_NAME}
       application: ${BE_CF_TEST_APP_NAME}
-    script: |-
+    script: "
       #!/bin/bash
-      cf push "${CF_APP}"
-- name: Production Environment
-  inputs:
-  - type: job
-    stage: Build Stage
-    job: Build
-    dir_name: null
-  triggers:
-  - type: stage
-  properties:
-  - name: CUSTOM_APP_NAME 
-    value: ${CUSTOM_APP_NAME}
-    type: text
-  - name: HTTPS
-    value: true
-    type: bool
-  - name: CORS_ORIGIN
-    value: ${CORS_ORIGIN}
-    type: text
-  jobs:
-  - name: Deploy to Production
-    type: deployer
-    deploy_permission: DEV_IN_SPACE
-    deploy_type: cf
-    target:
-      region_id: ${BE_PROD_REGION_ID}
-      organization: ${BE_PROD_ORG_NAME}
-      space: ${BE_PROD_SPACE_NAME}
-      application: ${BE_CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      cf push "${CF_APP}"
+      cf push \"${CF_APP}\""
+#- name: Production Environment
+#  inputs:
+#  - type: job
+#    stage: Build Stage
+#    job: Build
+#    dir_name: null
+#  triggers:
+#  - type: stage
+#  properties:
+#  - name: CUSTOM_APP_NAME 
+#    value: ${CUSTOM_APP_NAME}
+#    type: text
+#  - name: HTTPS
+#    value: true
+#    type: bool
+#  - name: CORS_ORIGIN
+#    value: ${CORS_ORIGIN}
+#    type: text
+#  jobs:
+#  - name: Deploy to Production
+#    type: deployer
+#    deploy_permission: DEV_IN_SPACE
+#    deploy_type: cf
+#    target:
+#      region_id: ${BE_PROD_REGION_ID}
+#      organization: ${BE_PROD_ORG_NAME}
+#      space: ${BE_PROD_SPACE_NAME}
+#      application: ${BE_CF_APP_NAME}
+#    script: |-
+#      #!/bin/bash
+#      cf push "${CF_APP}"
 hooks:
 - enabled: true
   label: null
-  ssl_enabled: true
+  ssl_enabled: false
   url: https://devops-api.ng.bluemix.net/v1/messaging/webhook/publish
