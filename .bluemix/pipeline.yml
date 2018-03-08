@@ -13,7 +13,11 @@ stages:
     type: builder
     artifact_dir: ''
     build_type: npm
-    script: "bjeff"
+    script: "#!/bin/bash\ninstall_node() {\nNODE_VERSION=v8.9.4\nINSTALL_NAME=node-v8.9.4-linux-x64\n\
+      if [ ! -e $INSTALL_NAME.tar.gz ]; then\nwget \"http://nodejs.org/dist/$NODE_VERSION/$INSTALL_NAME.tar.gz\"\
+      \necho 'Untarring'\ntar xf $INSTALL_NAME.tar.gz\nfi      \nNODE_8_INSTALL_DIR=`pwd`/$INSTALL_NAME/bin\n\
+      PATH=$NODE_8_INSTALL_DIR:$PATH\n}\ninstall_node\n# Verifying that Node version\
+      \ is correct\nnode -v\nnpm install -g yarn\nyarn install\nyarn build"
 - name: Staging Environment
   inputs:
   - type: job
@@ -23,9 +27,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: CUSTOM_APP_NAME 
-    value: ${CUSTOM_APP_NAME}
-    type: text
   - name: HTTPS
     value: 'TRUE'
     type: text
@@ -42,7 +43,9 @@ stages:
       organization: ${BE_PROD_ORG_NAME}
       space: ${BE_PROD_SPACE_NAME}
       application: ${BE_CF_TEST_APP_NAME}
-    script: "bjeff"
+    script: |-
+      #!/bin/bash
+      cf push "${CF_APP}"
 - name: Production Environment
   inputs:
   - type: job
@@ -52,9 +55,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: CUSTOM_APP_NAME 
-    value: ${CUSTOM_APP_NAME}
-    type: text
   - name: HTTPS
     value: 'TRUE'
     type: text
@@ -71,4 +71,11 @@ stages:
       organization: ${BE_PROD_ORG_NAME}
       space: ${BE_PROD_SPACE_NAME}
       application: ${BE_CF_APP_NAME}
-    script: "bjeff"
+    script: |-
+      #!/bin/bash
+      cf push "${CF_APP}"
+hooks:
+- enabled: true
+  label: null
+  ssl_enabled: false
+  url: https://devops-api.ng.bluemix.net/v1/messaging/webhook/publish
